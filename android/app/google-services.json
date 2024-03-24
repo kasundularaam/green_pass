@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "755503474490",
+    "project_id": "green-pass-nsbm",
+    "storage_bucket": "green-pass-nsbm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:755503474490:android:f4b61ab4440a41ff825203",
+        "android_client_info": {
+          "package_name": "com.greenpass.green_pass"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAE3A7x8qxD9MjVlQmTbu-nOrgYyU9rsBk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,43 @@
+name: green_pass
+description: "A new Flutter project."
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.3.1 <4.0.0"
+
+dependencies:
+  cloud_firestore: ^4.15.9
+  cupertino_icons: ^1.0.6
+  firebase_auth: ^4.17.9
+  firebase_core: ^2.27.1
+  firebase_storage: ^11.6.10
+  flutter:
+    sdk: flutter
+  image_picker: ^1.0.7
+  intl: ^0.19.0
+
+dev_dependencies:
+  flutter_lints: ^3.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+    - lib/assets/media.png
+    - lib/assets/background.png
+    - lib/assets/logo-no-background 1 (1).png
+    - lib/assets/Group 9.png
+    - lib/assets/media (2).png
+    - lib/assets/media (4).png
+    - lib/assets/media (5).png
+    - lib/assets/Barcode-PNG-Photo 1.png
+    - lib/assets/3d_avatar_18.png
+    - lib/assets/Group 1.png
+    - lib/assets/visa.png
+    - lib/assets/mastercard.png
