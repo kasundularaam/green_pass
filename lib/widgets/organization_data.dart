@@ -7,10 +7,10 @@ import '../models/user_model.dart';
 
 class OrganizationData extends StatefulWidget {
   final Organization organization;
-  OrganizationData({
-    Key? key,
+  const OrganizationData({
+    super.key,
     required this.organization,
-  }) : super(key: key);
+  });
 
   @override
   State<OrganizationData> createState() => _OrganizationInfoState();
@@ -147,7 +147,7 @@ class _OrganizationInfoState extends State<OrganizationData> {
                     ],
                   );
                 }
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }),
         ),
         Padding(
@@ -183,7 +183,7 @@ class _OrganizationInfoState extends State<OrganizationData> {
                       ),
                     );
                   }
-                  return Text("Loading...");
+                  return const Text("Loading...");
                 }),
           ),
         ),

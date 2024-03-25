@@ -8,10 +8,10 @@ class ListListener<T> extends StatefulWidget {
   final IListener<T> listener;
   final Widget Function(T item) itemBuilder;
   const ListListener({
-    Key? key,
+    super.key,
     required this.listener,
     required this.itemBuilder,
-  }) : super(key: key);
+  });
 
   @override
   State<ListListener<T>> createState() => _ListListenerState();
@@ -42,7 +42,7 @@ class _ListListenerState<T> extends State<ListListener<T>> {
                         _key++;
                       });
                     },
-                    child: Text("Retry")),
+                    child: const Text("Retry")),
               ],
             ),
           );
@@ -50,7 +50,7 @@ class _ListListenerState<T> extends State<ListListener<T>> {
         if (snapshot.hasData) {
           final dataList = snapshot.data;
           if (dataList == null) {
-            return Center(
+            return const Center(
               child: Text(
                 "Data not found",
                 textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class _ListListenerState<T> extends State<ListListener<T>> {
             );
           }
           if (dataList.isEmpty) {
-            return Center(
+            return const Center(
               child: Text(
                 "Empty",
                 textAlign: TextAlign.center,

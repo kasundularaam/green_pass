@@ -21,7 +21,7 @@ class _EventsPageState extends State<NavigationPage> {
     const EventsPage(),
     const SearchPage(),
     const SizedBox.shrink(),
-    BookingsPage(),
+    const BookingsPage(),
     const ProfilePage(),
   ];
 
@@ -53,7 +53,7 @@ class _EventsPageState extends State<NavigationPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddOrganizationPage(
+                    builder: (context) => const AddOrganizationPage(
                         // events: dummyEvents,
                         ),
                   ),
@@ -86,7 +86,7 @@ class _EventsPageState extends State<NavigationPage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => AddEventPage(
+                    builder: (context) => const AddEventPage(
                         // events: dummyEvents,
                         ),
                   ),

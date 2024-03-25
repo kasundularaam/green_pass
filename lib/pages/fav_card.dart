@@ -4,10 +4,10 @@ import 'package:green_pass/models/favorites_model.dart';
 
 class FavoriteCard extends StatefulWidget {
   final FavoriteEvent favorites;
-  FavoriteCard({
-    Key? key,
+  const FavoriteCard({
+    super.key,
     required this.favorites,
-  }) : super(key: key);
+  });
 
   @override
   State<FavoriteCard> createState() => _FavoriteCardState();

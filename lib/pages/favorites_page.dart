@@ -34,7 +34,7 @@ class SearchPage extends StatelessWidget {
                 if (snapshot.hasData) {
                   return EventCard(event: snapshot.data!);
                 }
-                return Text("Loading...");
+                return const Text("Loading...");
               }),
         ),
       ),

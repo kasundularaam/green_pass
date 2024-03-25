@@ -12,11 +12,11 @@ class SelectPaymentMethod extends StatefulWidget {
   final Ticket ticket;
   final int quantity;
   const SelectPaymentMethod({
-    Key? key,
+    super.key,
     required this.event,
     required this.ticket,
     required this.quantity,
-  }) : super(key: key);
+  });
 
   @override
   State<SelectPaymentMethod> createState() => _SelectPaymentMethodState();

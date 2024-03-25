@@ -8,7 +8,7 @@ class AddTicketDialog extends StatefulWidget {
   final Function(Ticket) onTicketAdded;
   final String eventId;
 
-  const AddTicketDialog({required this.onTicketAdded, required this.eventId});
+  const AddTicketDialog({super.key, required this.onTicketAdded, required this.eventId});
 
   @override
   State<AddTicketDialog> createState() => _AddTicketDialogState();

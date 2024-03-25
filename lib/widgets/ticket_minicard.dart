@@ -9,9 +9,9 @@ import 'package:flutter/material.dart';
 class TicketMiniCard extends StatefulWidget {
   final Booking booking;
   const TicketMiniCard({
-    Key? key,
+    super.key,
     required this.booking,
-  }) : super(key: key);
+  });
 
   @override
   State<TicketMiniCard> createState() => _TicketMiniCardState();

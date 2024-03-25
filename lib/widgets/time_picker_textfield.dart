@@ -4,10 +4,10 @@ class TimePickerTextField extends StatefulWidget {
   final String hint;
   final Function(TimeOfDay)? onTimePicked;
   const TimePickerTextField({
-    Key? key,
+    super.key,
     required this.hint,
     this.onTimePicked,
-  }) : super(key: key);
+  });
 
   @override
   State<TimePickerTextField> createState() => _TimePickerTextFieldState();

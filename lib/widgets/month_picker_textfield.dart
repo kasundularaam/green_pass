@@ -5,10 +5,10 @@ class MonthPickerTextfield extends StatefulWidget {
   final String hint;
   final Function(DateTime)? onDatePicked;
   const MonthPickerTextfield({
-    Key? key,
+    super.key,
     required this.hint,
     this.onDatePicked,
-  }) : super(key: key);
+  });
 
   @override
   State<MonthPickerTextfield> createState() => _DatePickerTextFieldState();

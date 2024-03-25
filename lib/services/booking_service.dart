@@ -47,7 +47,7 @@ class BookingService implements IListener {
   Stream<List<Booking>> listenToList() async* {
     final userId = UserService.getUserId();
 
-    final collection = await FirebaseFirestore.instance
+    final collection = FirebaseFirestore.instance
         .collection('booking')
         .where("userID", isEqualTo: userId);
 

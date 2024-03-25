@@ -12,7 +12,7 @@ class InputTextField extends StatelessWidget {
   final bool? isEnabled;
   final Function(String) onChanged;
   const InputTextField({
-    Key? key,
+    super.key,
     this.hint,
     required this.labelText,
     this.isPassword,
@@ -23,7 +23,7 @@ class InputTextField extends StatelessWidget {
     required this.onChanged,
     this.isOptional,
     this.isEnabled,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

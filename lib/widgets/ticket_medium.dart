@@ -95,7 +95,7 @@ class _TicketMediumState extends State<TicketMedium> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -108,7 +108,7 @@ class _TicketMediumState extends State<TicketMedium> {
                             color: Theme.of(context).colorScheme.onSurface),
                       ),
                       Padding(
-                          padding: EdgeInsets.only(bottom: 21),
+                          padding: const EdgeInsets.only(bottom: 21),
                           child: Text(
                             formattedDate,
                             style: Theme.of(context)
@@ -125,7 +125,7 @@ class _TicketMediumState extends State<TicketMedium> {
                             color: Theme.of(context).colorScheme.onSurface),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 0),
+                        padding: const EdgeInsets.only(bottom: 0),
                         child: FutureBuilder<User>(
                             future: UserService.getCurrentUser(),
                             builder: (context, snapshot) {

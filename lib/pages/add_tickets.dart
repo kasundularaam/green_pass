@@ -11,10 +11,10 @@ class AddTicket extends StatefulWidget {
   // final Event event;
   final String eventId;
   const AddTicket({
-    Key? key,
+    super.key,
     required this.eventId,
     // required this.event,
-  }) : super(key: key);
+  });
 
   @override
   State<AddTicket> createState() => _AddTicketState();
@@ -98,7 +98,7 @@ class _AddTicketState extends State<AddTicket> {
             },
           );
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }

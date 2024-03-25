@@ -5,10 +5,10 @@ import 'package:green_pass/widgets/organization_data.dart';
 
 class OrganizationInfoPage extends StatelessWidget {
   final Organization organization;
-  OrganizationInfoPage({
-    Key? key,
+  const OrganizationInfoPage({
+    super.key,
     required this.organization,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

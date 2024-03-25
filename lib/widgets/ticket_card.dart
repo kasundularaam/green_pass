@@ -10,11 +10,11 @@ class TicketCard extends StatelessWidget {
   final String eventId;
   final Ticket ticket;
   const TicketCard({
-    Key? key,
+    super.key,
     // required this.event,
     required this.ticket,
     required this.eventId,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

@@ -6,12 +6,12 @@ class InputDropDown extends StatelessWidget {
   final String labelText;
   final Function(String) onChanged;
   const InputDropDown({
-    Key? key,
+    super.key,
     this.selectedValue,
     required this.itemsList,
     required this.labelText,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

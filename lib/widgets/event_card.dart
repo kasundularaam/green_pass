@@ -20,9 +20,9 @@ import '../models/event_model.dart';
 class EventCard extends StatefulWidget {
   final Event event;
   const EventCard({
-    Key? key,
+    super.key,
     required this.event,
-  }) : super(key: key);
+  });
 
   @override
   State<EventCard> createState() => _EventCardState();
@@ -253,11 +253,11 @@ class FavoriteIcon extends StatefulWidget {
   final Function(bool) onToggle;
   final String eventID;
   const FavoriteIcon({
-    Key? key,
+    super.key,
     required this.isFavorite,
     required this.onToggle,
     required this.eventID,
-  }) : super(key: key);
+  });
 
   @override
   State<FavoriteIcon> createState() => _FavoriteIconState();
@@ -275,7 +275,7 @@ class _FavoriteIconState extends State<FavoriteIcon> {
         } else {
           FavoritesService.addFavorite(widget.eventID);
           // Add to favorites
-          ; // Call your addFavorite function
+// Call your addFavorite function
         }
       },
       child: Icon(

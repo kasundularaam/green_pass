@@ -16,11 +16,11 @@ class EnterCardDetails extends StatefulWidget {
   final int quantity;
 
   const EnterCardDetails({
-    Key? key,
+    super.key,
     required this.event,
     required this.ticket,
     required this.quantity,
-  }) : super(key: key);
+  });
 
   @override
   State<EnterCardDetails> createState() => _EnterCardDetailsState();

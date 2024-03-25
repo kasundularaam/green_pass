@@ -111,7 +111,7 @@ class _ticketSmallState extends State<ticketSmall> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -129,7 +129,7 @@ class _ticketSmallState extends State<ticketSmall> {
                                         .onSurface),
                           ),
                           Padding(
-                              padding: EdgeInsets.only(bottom: 21),
+                              padding: const EdgeInsets.only(bottom: 21),
                               child: Text(
                                 "LKR ${widget.ticket.ticketPrice.toInt().toString()}",
                                 style: Theme.of(context)

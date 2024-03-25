@@ -10,11 +10,11 @@ class TicketPage extends StatelessWidget {
   final Booking booking;
   final Ticket ticket;
   const TicketPage({
-    Key? key,
+    super.key,
     required this.event,
     required this.booking,
     required this.ticket,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

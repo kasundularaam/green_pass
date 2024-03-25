@@ -13,11 +13,11 @@ class TicketWidget extends StatefulWidget {
   final Ticket ticket;
   final Booking booking;
   const TicketWidget({
-    Key? key,
+    super.key,
     required this.event,
     required this.booking,
     required this.ticket,
-  }) : super(key: key);
+  });
 
   @override
   State<TicketWidget> createState() => _TicketWidgetState();
@@ -125,7 +125,7 @@ class _TicketWidgetState extends State<TicketWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -138,7 +138,7 @@ class _TicketWidgetState extends State<TicketWidget> {
                             color: Theme.of(context).colorScheme.onSurface),
                       ),
                       Padding(
-                          padding: EdgeInsets.only(bottom: 21),
+                          padding: const EdgeInsets.only(bottom: 21),
                           child: Text(
                             formattedDate,
                             style: Theme.of(context)
@@ -155,7 +155,7 @@ class _TicketWidgetState extends State<TicketWidget> {
                             color: Theme.of(context).colorScheme.onSurface),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(bottom: 21),
+                        padding: const EdgeInsets.only(bottom: 21),
                         child: FutureBuilder(
                           future: UserService.getCurrentUser(),
                           builder: (context, snapshot) {
@@ -233,7 +233,7 @@ class _TicketWidgetState extends State<TicketWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 30),
               child: TotalPriceContainer(
                 totalPrice: widget.ticket.ticketPrice * widget.booking.quantity,
               ),

@@ -6,12 +6,12 @@ class InputLargeTextField extends StatefulWidget {
   final String hint;
   final String label;
   const InputLargeTextField({
-    Key? key,
+    super.key,
     this.controller,
     required this.maxLength,
     required this.hint,
     required this.label,
-  }) : super(key: key);
+  });
 
   @override
   State<InputLargeTextField> createState() => _InputLargeTextFieldState();
