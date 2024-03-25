@@ -131,7 +131,6 @@ class _AddOrganizationPageState extends State<AddOrganizationPage> {
                       hint: "Organization Email address",
                       textInputType: TextInputType.emailAddress,
                       onChanged: (onChanged) {
-                        print(onChanged);
                         orgEmail = onChanged;
                       },
                     ),

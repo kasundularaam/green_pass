@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -137,7 +135,6 @@ class _EventCardState extends State<EventCard> {
                   FutureBuilder<User>(
                     future: UserService.getUserById(widget.event.userId),
                     builder: (context, snapshot) {
-                      log(snapshot.toString());
                       if (snapshot.hasData) {
                         return Text(
                           snapshot.data!.name,

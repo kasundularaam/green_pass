@@ -65,7 +65,6 @@ class EventService implements IListener<Event> {
 
   static Future<Event> getEventById(String id) async {
     try {
-      print(id);
       final DocumentSnapshot userSnapshot =
           await FirebaseFirestore.instance.collection('event').doc(id).get();
 

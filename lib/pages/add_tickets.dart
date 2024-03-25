@@ -67,7 +67,6 @@ class _AddTicketState extends State<AddTicket> {
                 child: Text(snapshot.error.toString()),
               );
             }
-            print(snapshot);
             if (snapshot.hasData) {
               final List<Ticket> tickets = snapshot.data!;
 
