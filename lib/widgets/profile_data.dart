@@ -58,7 +58,7 @@ class ProfileData extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const SettingsPage()),
+                                builder: (context) => SettingsPage()),
                           );
                         },
                         child: const Icon(Icons.settings_outlined)),
@@ -69,24 +69,12 @@ class ProfileData extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 31),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Personal info",
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(color: Theme.of(context).colorScheme.primary),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Icon(
-                    Icons.edit_outlined,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              ],
+            child: Text(
+              "Personal info",
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge
+                  ?.copyWith(color: Theme.of(context).colorScheme.primary),
             ),
           ),
           Padding(

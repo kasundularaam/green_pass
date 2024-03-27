@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class InputTextField extends StatelessWidget {
+  final String? initialValue;
   final String? hint;
   final String labelText;
   final bool? isPassword;
@@ -13,6 +15,7 @@ class InputTextField extends StatelessWidget {
   final Function(String) onChanged;
   const InputTextField({
     super.key,
+    this.initialValue,
     this.hint,
     required this.labelText,
     this.isPassword,
@@ -20,9 +23,9 @@ class InputTextField extends StatelessWidget {
     this.width,
     this.helperText,
     this.textInputType,
-    required this.onChanged,
     this.isOptional,
     this.isEnabled,
+    required this.onChanged,
   });
 
   @override
@@ -31,6 +34,7 @@ class InputTextField extends StatelessWidget {
       width: width,
       child: TextFormField(
         keyboardType: textInputType,
+        initialValue: initialValue,
         onChanged: onChanged,
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -38,11 +42,13 @@ class InputTextField extends StatelessWidget {
               return null;
             }
             return 'Please fill this field';
-          } else if (textInputType == TextInputType.emailAddress &&
+          }
+          if (textInputType == TextInputType.emailAddress &&
               !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
                   .hasMatch(value)) {
             return 'Please enter a valid email address';
-          } else if (isPassword == true && value.length < 6) {
+          }
+          if (isPassword == true && value.length < 6) {
             return 'Password must be at least 6 characters';
           }
           return null;

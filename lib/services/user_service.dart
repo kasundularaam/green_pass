@@ -1,12 +1,13 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:green_pass/models/failure.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import '../models/user_model.dart' as AppUser;
+import 'package:green_pass/models/failure.dart';
+
+import '../models/user_model.dart' as app_user;
 import '../sources/fake_users.dart';
 
 class UserService {
@@ -29,12 +30,12 @@ class UserService {
     throw Failure(message: "User not found");
   }
 
-  static Future<List<AppUser.User>> getAll() async {
+  static Future<List<app_user.User>> getAll() async {
     try {
       await Future.delayed(const Duration(seconds: 1));
       final List<dynamic> res = json.decode(userRes);
-      final List<AppUser.User> users = res
-          .map((e) => AppUser.User.fromMap(e as Map<String, dynamic>))
+      final List<app_user.User> users = res
+          .map((e) => app_user.User.fromMap(e as Map<String, dynamic>))
           .toList();
       return users;
     } catch (e) {
@@ -42,18 +43,18 @@ class UserService {
     }
   }
 
-  static Future<AppUser.User> getCurrentUser() async {
+  static Future<app_user.User> getCurrentUser() async {
     try {
       final id = getUserId();
       FirebaseFirestore firestore = FirebaseFirestore.instance;
       final user = await firestore.collection('user').doc(id).get();
-      return AppUser.User.fromMap(user.data() as Map<String, dynamic>);
+      return app_user.User.fromMap(user.data() as Map<String, dynamic>);
     } catch (e) {
       throw e.toString();
     }
   }
 
-  static Future<AppUser.User> getUserById(id) async {
+  static Future<app_user.User> getUserById(id) async {
     try {
       final DocumentSnapshot userSnapshot =
           await FirebaseFirestore.instance.collection('user').doc(id).get();
@@ -62,7 +63,7 @@ class UserService {
         final Map<String, dynamic> userData =
             userSnapshot.data() as Map<String, dynamic>;
 
-        final AppUser.User user = AppUser.User.fromMap(userData);
+        final app_user.User user = app_user.User.fromMap(userData);
 
         return user;
       } else {
@@ -128,6 +129,15 @@ class UserService {
     }
   }
 
+  static Future<void> updateUser(app_user.User user) async {
+    try {
+      final ref = FirebaseFirestore.instance.collection('user').doc(user.id);
+      await ref.set(user.toMap());
+    } catch (e) {
+      throw Failure(message: e.toString());
+    }
+  }
+
   static Future<void> sendEmailVerification() async {
     try {
       await FirebaseAuth.instance.currentUser!.sendEmailVerification();
@@ -188,24 +198,26 @@ class UserService {
       await FirebaseAuth.instance.sendPasswordResetEmail(
         email: userEmail,
       );
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Password reset email sent"),
-        ),
-      );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text("User not found"),
-          ),
-        );
+        throw Failure(message: 'No user found for that email.');
       }
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(e.toString()),
-        ),
-      );
+      throw Failure(message: "Reset password request failed");
+    } catch (e) {
+      throw Failure(message: "Reset password request failed");
     }
+  }
+
+  static Stream<app_user.User> listenCurrentUser() {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      return FirebaseFirestore.instance
+          .collection('user')
+          .doc(user.uid)
+          .snapshots()
+          .map((event) =>
+              app_user.User.fromMap(event.data() as Map<String, dynamic>));
+    }
+    throw Failure(message: "User not found");
   }
 }

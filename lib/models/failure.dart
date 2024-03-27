@@ -3,4 +3,9 @@ class Failure {
   Failure({
     required this.message,
   });
+
+  @override
+  String toString() {
+    return message;
+  }
 }

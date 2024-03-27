@@ -21,8 +21,8 @@ class ProfilePage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 23),
-        child: FutureBuilder(
-          future: UserService.getCurrentUser(),
+        child: StreamBuilder(
+          stream: UserService.listenCurrentUser(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return ProfileData(user: snapshot.data!);

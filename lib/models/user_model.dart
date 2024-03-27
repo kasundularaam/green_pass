@@ -35,6 +35,10 @@ class User {
     );
   }
 
+  factory User.empty() {
+    return User('', '', '', '', '', false);
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
