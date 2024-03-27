@@ -58,7 +58,7 @@ class ProfileData extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SettingsPage()),
+                                builder: (context) => const SettingsPage()),
                           );
                         },
                         child: const Icon(Icons.settings_outlined)),
