@@ -62,7 +62,9 @@ class _TicketWidgetState extends State<TicketWidget> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(borderRadius),
                   child: Image.network(
-                    widget.event.imageUrl,
+                    widget.event.imageUrl.isNotEmpty
+                        ? widget.event.imageUrl
+                        : "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                     fit: BoxFit.cover,
                     height: 102,
                     width: 102,

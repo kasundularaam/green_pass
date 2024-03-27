@@ -54,6 +54,12 @@ class _BuyTicketPageState extends State<BuyTicketPage> {
   }
 
   @override
+  void initState() {
+    onSelectButton(0, widget.tickets.first);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -93,29 +99,6 @@ class _BuyTicketPageState extends State<BuyTicketPage> {
                             );
                           }),
                     ),
-                    // child: OverflowBar(
-                    //   overflowSpacing: 11,
-                    //   children: [
-                    //     CustomToggleButton(
-                    //       ticketType: "label",
-                    //       ticketPrice: 2000,
-                    //       isSelected: selectedButtonIndex == 0,
-                    //       onSelect: (isSelected) => onSelectButton(0),
-                    //     ),
-                    //     CustomToggleButton(
-                    //       ticketType: "label",
-                    //       ticketPrice: 2000,
-                    //       isSelected: selectedButtonIndex == 1,
-                    //       onSelect: (isSelected) => onSelectButton(1),
-                    //     ),
-                    //     CustomToggleButton(
-                    //       ticketType: "label",
-                    //       ticketPrice: 2000,
-                    //       isSelected: selectedButtonIndex == 2,
-                    //       onSelect: (isSelected) => onSelectButton(2),
-                    //     ),
-                    //   ],
-                    // ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 23),
