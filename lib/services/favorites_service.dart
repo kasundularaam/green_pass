@@ -25,6 +25,16 @@ class FavoritesService implements IListener<FavoriteEvent> {
     }
   }
 
+  static Future<void> removeFavorite(String id) async {
+    try {
+      await FirebaseFirestore.instance.collection('favorites').doc(id).delete();
+    } on FirebaseException catch (e) {
+      throw Failure(message: e.message ?? "Failed to remove favorite");
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   static Future<FavoriteEvent> getFavorites() async {
     try {
       FirebaseFirestore firestore = FirebaseFirestore.instance;

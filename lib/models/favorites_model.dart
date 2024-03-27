@@ -23,6 +23,10 @@ class FavoriteEvent {
     );
   }
 
+  factory FavoriteEvent.withEvent({required String eventID}) {
+    return FavoriteEvent(id: '', userID: '', eventID: eventID);
+  }
+
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'id': id,

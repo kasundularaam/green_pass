@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'package:green_pass/models/favorites_model.dart';
 import 'package:green_pass/models/organization_model.dart';
 import 'package:green_pass/models/ticket_model.dart';
 import 'package:green_pass/models/user_model.dart';
@@ -70,16 +72,7 @@ class _EventCardState extends State<EventCard> {
         child: Column(
           children: [
             ListTile(
-              trailing: FavoriteIcon(
-                eventID: widget.event.id,
-                isFavorite: isFavorite, // Replace with your actual condition
-                onToggle: (isFav) {
-                  setState(() {
-                    isFavorite =
-                        isFav; // Update the condition when the icon is toggled
-                  });
-                },
-              ),
+              trailing: _FavoriteButton(eventId: widget.event.id),
               leading: FutureBuilder<Organization?>(
                   future: OrganizationService.getOrganizationByUserId(
                       widget.event.userId),
@@ -245,39 +238,66 @@ class _EventCardState extends State<EventCard> {
   }
 }
 
-class FavoriteIcon extends StatefulWidget {
-  final bool isFavorite;
-  final Function(bool) onToggle;
-  final String eventID;
-  const FavoriteIcon({
-    super.key,
-    required this.isFavorite,
-    required this.onToggle,
-    required this.eventID,
+class _FavoriteButton extends StatelessWidget {
+  final String eventId;
+  const _FavoriteButton({
+    required this.eventId,
   });
 
   @override
-  State<FavoriteIcon> createState() => _FavoriteIconState();
+  Widget build(BuildContext context) {
+    return StreamBuilder<List<FavoriteEvent>>(
+        stream: FavoritesService().listenToList(),
+        builder: (context, AsyncSnapshot<List<FavoriteEvent>> snapshot) {
+          return _Button(
+              favorite: _getFavorite(snapshot, eventId),
+              onAdd: (eventId) {
+                FavoritesService.addFavorite(eventId);
+              },
+              onRemove: (favoriteId) {
+                FavoritesService.removeFavorite(favoriteId);
+              });
+        });
+  }
 }
 
-class _FavoriteIconState extends State<FavoriteIcon> {
+FavoriteEvent _getFavorite(
+    AsyncSnapshot<List<FavoriteEvent>> snapshot, String eventId) {
+  if (snapshot.hasData) {
+    final favorites = snapshot.data;
+    if (favorites != null) {
+      return favorites.firstWhere((element) => element.eventID == eventId,
+          orElse: () => FavoriteEvent.withEvent(eventID: eventId));
+    }
+  }
+  return FavoriteEvent.withEvent(eventID: eventId);
+}
+
+class _Button extends StatelessWidget {
+  final FavoriteEvent favorite;
+  final Function(String eventId) onAdd;
+  final Function(String favoriteId) onRemove;
+  const _Button({
+    required this.favorite,
+    required this.onAdd,
+    required this.onRemove,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        widget.onToggle(!widget.isFavorite);
-        if (widget.isFavorite) {
-          // Remove from favorites
-          // You can add the removal logic here
-        } else {
-          FavoritesService.addFavorite(widget.eventID);
-          // Add to favorites
-// Call your addFavorite function
+    return IconButton(
+      onPressed: () {
+        if (favorite.id.isEmpty) {
+          onAdd(favorite.eventID);
+          return;
         }
+        onRemove(favorite.id);
       },
-      child: Icon(
-        widget.isFavorite ? Icons.star : Icons.star_border,
-        color: widget.isFavorite ? Theme.of(context).colorScheme.primary : null,
+      icon: Icon(
+        favorite.id.isNotEmpty ? Icons.star : Icons.star_border,
+        color: favorite.id.isNotEmpty
+            ? Theme.of(context).colorScheme.primary
+            : null,
       ),
     );
   }
