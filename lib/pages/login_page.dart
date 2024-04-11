@@ -34,8 +34,7 @@ class _LoginPageState extends State<LoginPage> {
                   children: <Widget>[
                     const SizedBox(height: 120),
                     Center(
-                      child: Image.asset(
-                          'lib/assets/logo-no-background 1 (1).png'),
+                      child: Image.asset("assets/logo.png"),
                     ),
                     const SizedBox(height: 50),
                     Center(
