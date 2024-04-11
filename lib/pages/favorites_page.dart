@@ -17,7 +17,7 @@ class SearchPage extends StatelessWidget {
         automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
         title: Text(
-          "Favorites",
+          "Search",
           style: Theme.of(context)
               .textTheme
               .titleLarge

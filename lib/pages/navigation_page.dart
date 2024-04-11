@@ -145,9 +145,9 @@ class _EventsPageState extends State<NavigationPage> {
             label: 'Home',
           ),
           NavigationDestination(
-            selectedIcon: Icon(Icons.star_outlined),
-            icon: Icon(Icons.star_border),
-            label: 'Favorites',
+            selectedIcon: Icon(Icons.search_outlined),
+            icon: Icon(Icons.search),
+            label: 'Search',
           ),
           NavigationDestination(
             selectedIcon: Icon(Icons.add),

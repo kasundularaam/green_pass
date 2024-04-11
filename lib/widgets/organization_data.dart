@@ -2,6 +2,7 @@ import 'package:green_pass/Services/user_service.dart';
 import 'package:flutter/material.dart';
 
 import 'package:green_pass/models/organization_model.dart';
+import 'package:green_pass/pages/add_event_page.dart';
 
 import '../models/user_model.dart';
 
@@ -168,7 +169,11 @@ class _OrganizationInfoState extends State<OrganizationData> {
                             color:
                                 Theme.of(context).colorScheme.outlineVariant),
                       ),
-                      onPressed: () {},
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => const AddEventPage(),
+                        ),
+                      ),
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 15),
                         child: Text(
